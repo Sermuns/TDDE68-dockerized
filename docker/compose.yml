@@ -1,0 +1,11 @@
+services:
+  pintos:
+    container_name: pintos
+    build: .
+    volumes:
+      - ../pintos:/pintos
+    stdin_open: true
+    tty: true
+    network_mode: "host"
+    working_dir: /pintos
+    command: bash
