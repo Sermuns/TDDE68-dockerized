@@ -14,13 +14,17 @@ You only need the `Dockerfile` and `compose.yaml` files, so you could download t
 Set the `volumes` path to the path of your Pintos source-code directory.
 > The "Pintos source-code" folder is the one with the directories `threads`, `userprog`, `utils`, etc.
 In the given code, the Pintos source-code is located in the parent directory of this repository.
+
+> [!IMPORTANT]
+> The left side of the volume mapping to `pintos` needs to correspond to the location of source-code.
+> In my case the source-code dir was adjacent to this dir, therefore `../pintos`
+
 ```yaml
 services:
   pintos:
     container_name: pintos
     build: .
     volumes:
-
       # Set the left path to the path of your Pintos source-code directory on the host machine
       - ../pintos:/pintos 
     stdin_open: true
@@ -38,12 +42,10 @@ This step will only be needed the first time you run the container.
 > This will automatically be done if trying to execute step 4.
 
 ## 4. Run the container:
-`docker compose run --name pintos --rm pintos`
+`docker compose run --rm pintos`
 This will start the container, and you will be attached in the container's shell. Everything is set up and ready to go!
 
 > By using the `--rm` flag the container will be removed when it is stopped.
-
-> By using the `--name pintos` flag the container will be named `pintos`.
 
 ## 5. Stop the container:
 
